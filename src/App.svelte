@@ -2,11 +2,13 @@
   import { onMount } from "svelte";
   import { select } from "./select.js";
   import Welcome from "./screens/Welcome.svelte"
+
   let state = $state("Welcome");
   let celebs_promise;
   let selection;
+  
   const start = async (category)=>{
-    console.log(category)
+    // console.log(category)
     const {celebs,lookup} = await celebs_promise
     selection = select(celebs,lookup,category)
     state ="playing"

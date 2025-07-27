@@ -26,13 +26,17 @@ export function select(celebs, lookup, category) {
     const ai = Math.floor(n * filtered.length);
     const a = filtered[ai];
 
+    if (!a) {
+      continue; // Skip this iteration if 'a' is undefined
+    }
+
     // remove a from the array so this person can't be picked again
     remove(filtered, ai);
 
     let b;
 
     // if this celeb has 'similar' celebs, decide whether to pick one
-    const similar = a.similar.filter((id) => !seen.has(id));
+    const similar = a.similar?.filter((id) => !seen.has(id));
     if (similar.length > 0 && Math.random() < 0.75) {
       const id = pick_random(similar);
       b = lookup.get(id);
