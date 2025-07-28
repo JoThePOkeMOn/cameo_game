@@ -42,7 +42,7 @@
     <p>Select a category to play</p>
     <div class="categories">
         {#each categories as category}
-            <button disabled={selected} onclick={()=>{handleClick(category)}}>{category.label}</button>
+            <button disabled={selected} onclick={()=>{handleClick(category.slug)}}>{category.label}</button>
         {/each}
     </div>
     .

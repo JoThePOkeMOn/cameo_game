@@ -2,16 +2,19 @@
   import { onMount } from "svelte";
   import { select } from "./select.js";
   import Welcome from "./screens/Welcome.svelte"
+  import Playing from "./screens/Playing.svelte";
 
-  let state = $state("Welcome");
+  let states = $state("Welcome");
   let celebs_promise;
-  let selection;
+  let selection = $state();
   
   const start = async (category)=>{
     // console.log(category)
     const {celebs,lookup} = await celebs_promise
+    // console.log(celebs)
+    // console.log(lookup)
     selection = select(celebs,lookup,category)
-    state ="playing"
+    states ="playing"
   }
   const load_celebs =async ()=>{
     const res = await fetch("https://cameo-explorer.netlify.app/celebs.json")
@@ -28,9 +31,10 @@
     data.forEach(c =>{
       if(c.reviews >= 50){
         subset.add(c)
+        if(c.similar.length !== 0){
         c.similar.forEach(id =>{
           subset.add(lookup.get(id))
-        })
+        })}
       }
     })
     return {celebs : Array.from(subset),lookup}
@@ -42,10 +46,10 @@
   
 </script>
 <main>
-  {#if state ==="Welcome"}
+  {#if states ==="Welcome"}
     <Welcome onSelection={start} />
-  {:else if state ==="playing"}
-    <p>playing</p>
+  {:else if states ==="playing"}
+    <Playing {selection}/>
   {/if}
 </main>
 

@@ -47,6 +47,7 @@ export function select(celebs, lookup, category) {
       b = pick_random(filtered);
     }
 
+    if (!b) continue;
     selection.push({ a, b });
 
     seen.add(a.id);
