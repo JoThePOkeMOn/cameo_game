@@ -1,4 +1,5 @@
 <script>
+    import Card from "../component/Card.svelte";
     let {selection} = $props();
 
     const load_details = async (celebs)=>{
@@ -18,7 +19,7 @@
     {#await promises[i] then [a,b] }
         <div class="game">
             <div class="card-container">
-                <p>{a.name}</p>
+                <p><Card celeb = {a} /></p>
             </div>
 
             <div>
@@ -26,7 +27,7 @@
             </div>
 
             <div class="card-container">
-                <p>{b.name}</p>
+                <p><Card celeb = {b}/> </p>
             </div>
         </div>
     {:catch}
@@ -47,4 +48,29 @@
    .error{
     color: red;
    }
+   .game{
+    display: grid;
+    grid-template-rows: 1fr 2em 1fr;
+    grid-gap: 0.5em;
+    width: 100%;
+    height: 100%;
+    max-width: min(100%, 40vh);
+    margin: 0 auto ;
+   }
+
+   .game > div{
+    display: flex;
+    align-items: center;
+   }
+
+   @media (min-width: 640px){
+    .game{
+    max-width: 100%;
+    grid-template-rows: none;
+    grid-template-columns: 1fr 8em 1fr;
+   }
+   .same{
+    height: 8em ;
+   }
+}
 </style>
