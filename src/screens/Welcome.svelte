@@ -22,7 +22,7 @@
     // }
     const select = (category)=>{
         selected = true
-        onSelection(category)
+        onSelection(category) 
     }
     function handleClick(category){
         select(category)

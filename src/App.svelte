@@ -60,6 +60,7 @@
     align-items: center;
     text-align: center;
     height: 100%;
+    padding: 1em;
     margin: 0 auto;
     flex-direction: column;
     max-width: 800px;
