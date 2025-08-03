@@ -1,6 +1,6 @@
 <script>
   import Card from "../component/Card.svelte";
-  import sleep from '../utils.js';
+  import {sleep} from '../utils.js';
   let { selection } = $props();
 
   const load_details = async (celebs) => {
@@ -19,7 +19,7 @@
       ? 'right'
       : 'wrong';
     //sleep for 1500ms
-    sleep(1500)
+    await sleep(1500)
 
     if(i < selection.length -1){
         i++;
