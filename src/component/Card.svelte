@@ -1,6 +1,7 @@
 <script>
     // import { createEventDispatcher } from "svelte";
     let {celeb,onselect} = $props()
+  
     // const dispatch = createEventDispatcher();
     // const select =()=>{
     //     onselect()

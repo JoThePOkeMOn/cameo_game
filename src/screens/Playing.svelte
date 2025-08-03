@@ -1,5 +1,6 @@
 <script>
   import Card from "../component/Card.svelte";
+  import sleep from '../utils.js';
   let { selection } = $props();
 
   const load_details = async (celebs) => {
@@ -12,12 +13,14 @@
     Promise.all([load_details(round.a), load_details(round.b)])
   );
   let i = $state(0);
-
-  const submit =(a,b,sign)=>{
-    const result = Math.sign(a.price - b.price) === sign
+  let last_result;
+  const submit =async(a,b,sign)=>{
+     last_result = Math.sign(a.price - b.price) === sign
       ? 'right'
       : 'wrong';
-    console.log(result);
+    //sleep for 1500ms
+    sleep(1500)
+
     if(i < selection.length -1){
         i++;
     }else{
