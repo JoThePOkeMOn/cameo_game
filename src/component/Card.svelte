@@ -6,16 +6,16 @@
     // const select =()=>{
     //     onselect()
     // }
-    // function handleClick(){
-    //     select()
-    //     // dispatch('select')
-    // }
+    function handleClick(){
+        onselect()
+        // dispatch('select')
+    }
     
   
 </script>
 
 <div class="card-container">
-    <button class="card" onclick={()=>{onselect}} style="background-image:url({celeb.image})">
+    <button class="card" onclick={handleClick} style="background-image:url({celeb.image})">
         <div class="details">
             <h1><a target="_blank" href="https://cameo-explorer.netlify.app/celebs/${celeb.id}">{celeb.nameL}</a></h1>
             <p class="type ">{celeb.type}</p>

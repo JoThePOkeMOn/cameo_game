@@ -57,7 +57,7 @@ h1{
 }
 .logo {
     display: inline-block;
-    background: url(../assets/compare.svg) 50% 50% no-repeat;
+    background: url(../assests/compare.svg) 50% 50% no-repeat;
     background-size: 100% 100%;
     width: 0.8em;
     top: 0.05em;
